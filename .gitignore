@@ -1,0 +1,9 @@
+# 配布用にパッケージした成果物
+*.kwinscript
+*.zip
+
+# エディタ / OS
+.vscode/
+.idea/
+*.swp
+.DS_Store

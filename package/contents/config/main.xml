@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kcfg xmlns="http://www.kde.org/standards/kcfg/1.0"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.kde.org/standards/kcfg/1.0
+                          http://www.kde.org/standards/kcfg/1.0/kcfg.xsd" >
+  <kcfgfile name=""/>
+  <group name="">
+    <entry name="gapSize" type="Double">
+      <default>0</default>
+    </entry>
+    <entry name="screenEdgeGapTop" type="Double">
+      <default>0</default>
+    </entry>
+    <entry name="screenEdgeGapBottom" type="Double">
+      <default>0</default>
+    </entry>
+    <entry name="screenEdgeGapLeft" type="Double">
+      <default>0</default>
+    </entry>
+    <entry name="screenEdgeGapRight" type="Double">
+      <default>0</default>
+    </entry>
+    <entry name="applyGapsToMaximize" type="Bool">
+      <default>true</default>
+    </entry>
+    <entry name="almostMaximizeWidth" type="Double">
+      <default>0.9</default>
+    </entry>
+    <entry name="almostMaximizeHeight" type="Double">
+      <default>0.9</default>
+    </entry>
+    <entry name="sizeOffset" type="Double">
+      <default>30</default>
+    </entry>
+    <entry name="minimumWindowWidth" type="Double">
+      <default>0</default>
+    </entry>
+    <entry name="minimumWindowHeight" type="Double">
+      <default>0</default>
+    </entry>
+    <entry name="centeredDirectionalMove" type="Bool">
+      <default>true</default>
+    </entry>
+    <entry name="curtainChangeSize" type="Bool">
+      <default>true</default>
+    </entry>
+    <entry name="debug" type="Bool">
+      <default>false</default>
+    </entry>
+  </group>
+</kcfg>

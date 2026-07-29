@@ -1,0 +1,17 @@
+{
+    "KPackageStructure": "KWin/Script",
+    "KPlugin": {
+        "Id": "rectangle",
+        "Name": "Rectangle",
+        "Description": "Keyboard-driven window snapping, a port of macOS Rectangle",
+        "License": "MIT",
+        "Version": "0.1.0",
+        "Icon": "preferences-system-windows",
+        "Authors": [
+            {
+                "Name": "kobago"
+            }
+        ]
+    },
+    "X-Plasma-API": "javascript"
+}
