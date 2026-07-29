@@ -1,0 +1,49 @@
+# git-cliff の設定。CHANGELOG.md を Conventional Commits から生成する。
+#   git-cliff --tag vX.Y.Z -o CHANGELOG.md
+# 規約は CONTRIBUTING.md を参照。
+
+[changelog]
+header = """
+# 変更履歴
+
+本ファイルは [git-cliff](https://github.com/orhun/git-cliff) で自動生成しています。
+手で編集しないでください。
+
+"""
+body = """
+{% if version %}\
+## [{{ version | trim_start_matches(pat="v") }}] - {{ timestamp | date(format="%Y-%m-%d") }}
+{% else %}\
+## 未リリース
+{% endif %}\
+{% for group, commits in commits | group_by(attribute="group") %}
+### {{ group }}
+{% for commit in commits %}
+- {% if commit.scope %}**{{ commit.scope }}**: {% endif %}{{ commit.message | upper_first }}\
+{% endfor %}
+{% endfor %}\n
+"""
+footer = ""
+trim = true
+
+[git]
+conventional_commits = true
+filter_unconventional = true
+protect_breaking_commits = true
+split_commits = false
+tag_pattern = "v[0-9].*"
+sort_commits = "oldest"
+
+# 型を日本語の見出しにまとめる。changelog に載せないものは skip する。
+commit_parsers = [
+  { message = "^feat", group = "追加" },
+  { message = "^fix", group = "修正" },
+  { message = "^perf", group = "性能" },
+  { message = "^refactor", group = "内部整理" },
+  { message = "^docs", group = "ドキュメント" },
+  { message = "^test", skip = true },
+  { message = "^build", group = "パッケージ" },
+  { message = "^ci", skip = true },
+  { message = "^chore\\(release\\)", skip = true },
+  { message = "^chore", skip = true },
+]
