@@ -106,13 +106,13 @@ journalctl --user -b -f | grep rectangle-kwin
 
 | Phase | 内容 | アクション数 |
 |---|---|---|
-| 2 | 1/4・3/4 の縦割り、縦方向 1/3・2/3、四隅 1/3、中央 2/3、<br>1/8・1/9・1/12・1/16 分割 | 62 |
-| 3 | 次 / 前・特定のディスプレイへの移動 | 11 |
-| 4 | 幅 / 高さ個別の拡大縮小、倍 / 半分（方向指定）、サイズ指定 | 14 |
-| 5 | tileAll / cascadeAll などの複数ウィンドウ整列 | 5 |
-| 6 | 同じキーの連打によるサイズ循環（½ → ⅔ → ⅓）、位置循環 | 0 |
-| 7 | リサイズ増分によるズレへの追随、縦長ディスプレイ対応、<br>アプリ別の無効化、設定 UI | 0 |
-| 保留 | Todo モード | 2 |
+| [2](https://github.com/kobago/rectangle-kwinscript/issues/1) | 1/4・3/4 の縦割り、縦方向 1/3・2/3、四隅 1/3、中央 2/3、<br>1/8・1/9・1/12・1/16 分割 | 62 |
+| [3](https://github.com/kobago/rectangle-kwinscript/issues/2) | 次 / 前・特定のディスプレイへの移動 | 11 |
+| [4](https://github.com/kobago/rectangle-kwinscript/issues/3) | 幅 / 高さ個別の拡大縮小、倍 / 半分（方向指定）、サイズ指定 | 14 |
+| [5](https://github.com/kobago/rectangle-kwinscript/issues/4) | tileAll / cascadeAll などの複数ウィンドウ整列 | 5 |
+| [6](https://github.com/kobago/rectangle-kwinscript/issues/5) | 同じキーの連打によるサイズ循環（½ → ⅔ → ⅓）、位置循環 | 0 |
+| [7](https://github.com/kobago/rectangle-kwinscript/issues/6) | リサイズ増分によるズレへの追随、縦長ディスプレイ対応、<br>アプリ別の無効化、設定 UI | 0 |
+| [保留](https://github.com/kobago/rectangle-kwinscript/issues/7) | Todo モード | 2 |
 
 Phase 2 は分数テーブルへの追加だけで済むため、完了時点で 93 / 125 アクションに
 到達します。

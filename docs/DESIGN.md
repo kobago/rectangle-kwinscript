@@ -471,7 +471,7 @@ MakeLarger / MakeSmaller / Move 4 方向 = 31。
 
 | Phase | 内容 | 数 | 実装の性質 |
 |---|---|---|---|
-| **2** | 1/4・3/4 の縦割り (`firstFourth`, `secondFourth`, `thirdFourth`,<br>`lastFourth`, `firstThreeFourths`, `centerThreeFourths`, `lastThreeFourths`) | 7 | 分数テーブル追加 |
+| **2** ([#1](https://github.com/kobago/rectangle-kwinscript/issues/1)) | 1/4・3/4 の縦割り (`firstFourth`, `secondFourth`, `thirdFourth`,<br>`lastFourth`, `firstThreeFourths`, `centerThreeFourths`, `lastThreeFourths`) | 7 | 分数テーブル追加 |
 | **2** | 縦方向の 1/3・2/3 (`topVerticalThird`, `middleVerticalThird`,<br>`bottomVerticalThird`, `topVerticalTwoThirds`, `bottomVerticalTwoThirds`) | 5 | 分数テーブル追加 |
 | **2** | 四隅の 1/3 (`topLeftThird`, `topRightThird`,<br>`bottomLeftThird`, `bottomRightThird`) | 4 | 分数テーブル追加 |
 | **2** | 中央 2/3 (`centerTwoThirds`) | 1 | 分数テーブル追加 |
@@ -479,15 +479,15 @@ MakeLarger / MakeSmaller / Move 4 方向 = 31。
 | **2** | 1/9 分割 | 9 | 分数テーブル追加 |
 | **2** | 1/12 分割 | 12 | 分数テーブル追加 |
 | **2** | 1/16 分割 | 16 | 分数テーブル追加 |
-| **3** | 次 / 前のディスプレイへ移動 (`previousDisplay`, `nextDisplay`) | 2 | 新規ロジック |
+| **3** ([#2](https://github.com/kobago/rectangle-kwinscript/issues/2)) | 次 / 前のディスプレイへ移動 (`previousDisplay`, `nextDisplay`) | 2 | 新規ロジック |
 | **3** | 特定ディスプレイへ移動 (`displayOne` … `displayNine`) | 9 | 新規ロジック |
-| **4** | 幅 / 高さ個別の拡大縮小 (`largerWidth`, `smallerWidth`,<br>`largerHeight`, `smallerHeight`) | 4 | 新規ロジック |
+| **4** ([#3](https://github.com/kobago/rectangle-kwinscript/issues/3)) | 幅 / 高さ個別の拡大縮小 (`largerWidth`, `smallerWidth`,<br>`largerHeight`, `smallerHeight`) | 4 | 新規ロジック |
 | **4** | 倍 / 半分（方向指定） (`doubleHeightUp` … `halveWidthRight`) | 8 | 新規ロジック |
 | **4** | サイズ指定 (`specified`)、目立たせて中央 (`centerProminently`) | 2 | 新規ロジック |
-| **5** | 複数ウィンドウ整列 (`tileAll`, `cascadeAll`, `reverseAll`,<br>`tileActiveApp`, `cascadeActiveApp`) | 5 | 新規ロジック |
-| **6** | 同じキー連打によるサイズ循環（½ → ⅔ → ⅓）<br>1/3 系・1/4 系の位置循環<br>モニタ跨ぎの連続実行 | 0 | 既存アクションの挙動変更 |
-| **7** | リサイズ増分によるズレへの追随（本家 `BestEffortWindowMover` 相当）<br>縦長ディスプレイ対応（レイアウト切替）<br>アプリ別の無効化、設定 UI (`config.ui`) | 0 | 挙動変更・基盤 |
-| **保留** | Todo モード (`leftTodo`, `rightTodo`) | 2 | 用途が限定的 |
+| **5** ([#4](https://github.com/kobago/rectangle-kwinscript/issues/4)) | 複数ウィンドウ整列 (`tileAll`, `cascadeAll`, `reverseAll`,<br>`tileActiveApp`, `cascadeActiveApp`) | 5 | 新規ロジック |
+| **6** ([#5](https://github.com/kobago/rectangle-kwinscript/issues/5)) | 同じキー連打によるサイズ循環（½ → ⅔ → ⅓）<br>1/3 系・1/4 系の位置循環<br>モニタ跨ぎの連続実行 | 0 | 既存アクションの挙動変更 |
+| **7** ([#6](https://github.com/kobago/rectangle-kwinscript/issues/6)) | リサイズ増分によるズレへの追随（本家 `BestEffortWindowMover` 相当）<br>縦長ディスプレイ対応（レイアウト切替）<br>アプリ別の無効化、設定 UI (`config.ui`) | 0 | 挙動変更・基盤 |
+| **保留** ([#7](https://github.com/kobago/rectangle-kwinscript/issues/7)) | Todo モード (`leftTodo`, `rightTodo`) | 2 | 用途が限定的 |
 
 合計 94。Phase 2 完了時点で **93 / 125** アクションに到達する。
 
