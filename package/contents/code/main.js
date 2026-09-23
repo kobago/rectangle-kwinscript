@@ -563,6 +563,19 @@ function executeRestore(win, id, cfg) {
     log("Restore 実行: " + JSON.stringify(target));
 }
 
+// Maximize は KWin の最大化状態にする（タイトルバーのボタンと同じ挙動）。
+// ただし gap を効かせる設定のときは最大化状態では隙間を作れないため、
+// 従来どおり作業領域いっぱいのジオメトリ書き込みにフォールバックする。
+function canNativeMaximize(win, cfg) {
+    if (!win.maximizable) { return false; }
+    if (cfg.screenEdgeGapTop !== 0 || cfg.screenEdgeGapBottom !== 0 ||
+        cfg.screenEdgeGapLeft !== 0 || cfg.screenEdgeGapRight !== 0) {
+        return false;
+    }
+    if (cfg.applyGapsToMaximize && cfg.gapSize > 0) { return false; }
+    return true;
+}
+
 function execute(actionName) {
     try {
         var win = getTargetWindow();
@@ -586,6 +599,15 @@ function execute(actionName) {
         var rect = calcTargetRect(actionName, win, area, cfg);
         if (!rect) {
             log("未知のアクション: " + actionName);
+            return;
+        }
+
+        if (actionName === "Maximize" && canNativeMaximize(win, cfg)) {
+            unsnap(win);
+            win.setMaximize(true, true);
+            // 最大化後のジオメトリは作業領域そのもの（gap 無しが前提）。
+            recordHistory(id, actionName, preRect, area);
+            log("Maximize 実行（ネイティブ最大化）");
             return;
         }
 

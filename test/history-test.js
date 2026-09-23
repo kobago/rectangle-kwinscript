@@ -27,7 +27,8 @@ currentWin = {
   normalWindow: true, moveable: true, resizeable: true, minimized: false,
   fullScreen: false, minSize: { width: 0, height: 0 }, internalId: "{w1}",
   desktops: [{ name: "d1" }], output: {}, tile: null,
-  frameGeometry: { ...ORIG }, setMaximize() {},
+  frameGeometry: { ...ORIG }, maximizable: true, maximized: false,
+  setMaximize(v, h) { this.maximized = v && h; if (this.maximized) { this.frameGeometry = { ...AREA }; } },
 };
 const go = a => handlers["Rectangle: " + a]();
 const geo = () => JSON.stringify(currentWin.frameGeometry);
@@ -36,6 +37,13 @@ const restore = () => vm.runInContext('JSON.stringify(restoreGeometry["{w1}"] ||
 
 let fails = 0;
 const chk = (l, g, w) => { const ok = g === w; if (!ok) fails++; console.log((ok?"  ok   ":"  FAIL ")+l+"  "+g+(ok?"":"  want="+w)); };
+
+console.log("--- Maximize → Restore ---");
+go("Maximize");
+chk("最大化状態", String(currentWin.maximized), "true");
+go("Restore");
+chk("最大化解除", String(currentWin.maximized), "false");
+chk("元の位置へ戻る", geo(), JSON.stringify(ORIG));
 
 console.log("--- 連続実行による count の伸び（Phase 2 の土台）---");
 go("LeftHalf"); chk("1回目", count(), "LeftHalf:1"); chk("  restore に元ジオメトリ", restore(), JSON.stringify(ORIG));

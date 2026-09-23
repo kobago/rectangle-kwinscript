@@ -151,7 +151,7 @@ rectangle-kwinscript/
 
 | shortcut name | 説明 | ロジック | gap |
 |---|---|---|---|
-| `Rectangle: Maximize` | 最大化 | 作業領域いっぱい | 両方向<br>（`applyGapsToMaximize` が false なら無し） |
+| `Rectangle: Maximize` | 最大化 | KWin の最大化状態にする（`setMaximize(true, true)`）。gap が効く設定、または最大化できないウィンドウは作業領域いっぱいのジオメトリ書き込み | 両方向<br>（`applyGapsToMaximize` が false なら無し） |
 | `Rectangle: MaximizeHeight` | 高さのみ最大化 | x, width は維持。`y = area.y`, `height = area.height` | 縦方向のみ |
 | `Rectangle: AlmostMaximize` | ほぼ最大化 | `w = round(area.w * 0.9)`, `h = round(area.h * 0.9)` を中央寄せ | 無し |
 | `Rectangle: Center` | 中央寄せ | サイズ維持のまま中央へ。§4.6 参照 | 無し |

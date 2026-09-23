@@ -26,7 +26,13 @@ function makeWin(geo, opts) {
     output: { name: "DP-2" },
     tile: null,
     frameGeometry: geo,
-    setMaximize() {},
+    maximizable: opts.maximizable !== false,
+    maximized: false,
+    setMaximize(v, h) {
+      // KWin と同じく、最大化すると作業領域いっぱいになる。
+      this.maximized = v && h;
+      if (this.maximized) { this.frameGeometry = { ...AREA }; }
+    },
   };
 }
 
@@ -75,6 +81,9 @@ eq("BottomRight",run("BottomRight", full),{ x: 1280, y: 700, width: 1280, height
 eq("FirstThird", run("FirstThird", full), { x: 0, y: 0, width: 853, height: 1400 });
 eq("LastThird",  run("LastThird", full),  { x: 1707, y: 0, width: 853, height: 1400 });
 eq("Maximize",   run("Maximize", small),  full);
+eq("Maximize はネイティブ最大化", currentWin.maximized, true);
+eq("Maximize(非 maximizable)", run("Maximize", small, {}, { maximizable: false }), full);
+eq("非 maximizable はジオメトリ書き込み", currentWin.maximized, false);
 eq("BottomRightSixth", run("BottomRightSixth", full), { x: 1707, y: 700, width: 853, height: 700 });
 eq("CenterHalf",  run("CenterHalf", full),  { x: 640, y: 0, width: 1280, height: 1400 });
 
@@ -85,6 +94,7 @@ eq("RightHalf",  run("RightHalf", full, g8),  { x: 1284, y: 8, width: 1268, heig
 eq("TopHalf",    run("TopHalf", full, g8),    { x: 8, y: 8, width: 2544, height: 688 });
 eq("BottomHalf", run("BottomHalf", full, g8), { x: 8, y: 704, width: 2544, height: 688 });
 eq("Maximize",   run("Maximize", small, g8),  { x: 8, y: 8, width: 2544, height: 1384 });
+eq("gap ありはジオメトリ書き込み", currentWin.maximized, false);
 eq("CenterHalf", run("CenterHalf", full, g8), { x: 648, y: 8, width: 1264, height: 1384 });
 
 console.log("--- 特殊 ---");
